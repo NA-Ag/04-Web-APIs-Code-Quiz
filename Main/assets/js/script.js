@@ -16,7 +16,7 @@ var timerCount;
 var lettersInChosenWord = [];
 var blanksLetters = [];
 
-// Array of words the user will guess
+// Array of questions the user will guess
 var words = ["variable","array", "modulus", "object", "function", "string", "boolean"];
 
 // The init function is called when the page loads 
