@@ -1,53 +1,68 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>CSS Box Styling</title>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" type="text/css" href="./assets/css/style.css" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./assets/css/normalize.css" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <title>Quiz Game</title>
   </head>
 
-  <!-- Body starts here-->
   <body>
-
-    <!-- Header class shows the start game button -->
     <header>
-      <!-- Main Header -->
-      <div class= "large-font">Coding Quizz Challenge</div>
-      <!-- Button -->
-      <button class="start-button">Start</button>
+      <h1>Javascript Quiz Game</h1>
+      <div>
+        <p>Answer as many questions as you can within the time limit.</p>
+        <p>Wrong answers will deduct 10 secounds from your remaining time.</p>
+        <!-- Start button will be used to begin the quizz-->
+        <button class="start-button">Start</button>
+      </div>
     </header>
 
-    <!-- Main section starts here-->
     <main>
+      <!--Questions section-->
+      <section class="card">
+        <!--Questions will appear in this section-->
+        <div class="result form-card timer-text"></div>
+        <div class="questions">
+          <div id="question">Questions appear here</div>
+          <div class="option-container option-button">
+            <button class="option" onclick="" id="option1">option1</button>
+            <button class="option" onclick="" id="option2">option2</button>
+            <button class="option" onclick="" id="option3">option3</button>
+            <button class="option" onclick="" id="option4">option4</button>
+          </div>
+        </div>
 
-        <!--  -->
-      <section>
-        <div class="card word-guess">
-          <div class="large-font word-blanks">Questions</div>
+        <!---->
+        <div class="navigation form-card button">
+          <button class="evaluate">Evaluate</button>
+          <button class="next">Next</button>
         </div>
       </section>
 
-      <!-- -->
-      <section>
-        <div class="card results">
-          <div class = "win-loss-container">
-          <div>
-          <h2>Correct: <span class="win">0 </span> </h2>
-          <h2>Incorrect: <span class="lose">0</span></h2>
+      <!--Timer, highscore button, and current score will appear here-->
+      <section class="card-timer">
+        <div>
+          <a class="highscore button" href="./highscores.html">Highscore</a>
         </div>
-          <button class="reset-button">Reset Score</button>
-      </div>
-          <div class= "card timer">
-            <div class = "timer-text">
-            <div class="large-font timer-count">60</div>
+
+        <div class="win-loss-container">
+          <div>
+            <h2>Score: <span class="win score">0 </span></h2>
+          </div>
+        </div>
+
+        <div class="timer">
+          <div class="timer-text">
+            <span class="large-font timer-count timer">60</span>
             <h3>seconds remaining</h3>
           </div>
-          </div>
         </div>
       </section>
-
     </main>
-    <script src="assets/js/script.js"></script>
+
+    <script src="./assets/js/script.js"></script>
   </body>
 </html>

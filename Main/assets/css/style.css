@@ -1,7 +1,7 @@
 * {
     box-sizing: border-box;
-  }
-  
+    }
+    
   body {
     font-family: Arial;
     margin: 0;
@@ -9,24 +9,24 @@
     flex-direction: column;
     min-height: 100vh;
     justify-content: flex-start;
-    background: linear-gradient(0deg, rgba(19,41,61,1) 0%, rgba(237,245,249,1) 63%);
+    background: #F0F8FF;
+    }
+    
+  header {
+    padding: 40px;
+    text-align: center;
+    background: rgb(0,48,255);
+    background: linear-gradient(90deg, #00d2ff 0%, #3a47d5 100%);
+    color: white;
+    border-bottom:30px #879274;
   }
-  
-  .reset-button {
-    font-size: 16px;
-    height: 30px;
-    line-height: 8px;
-    margin-top: 20px;
-  }
-  
-  .win-loss-container {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 16px;
+    
+  button {
+    background-image: linear-gradient(to right, #ECE9E6 0%, #FFFFFF  51%, #ECE9E6  100%)
   }
   
   button {
-    background: radial-gradient(circle, rgba(240,230,140,1) 0%, rgba(187,96,33,0.9542191876750701) 100%);
+    border: solid rgb(0, 0, 0) 0px;
     border-radius: 8px;
     color: #13293d;
     cursor: pointer;
@@ -36,18 +36,15 @@
     max-width: 255px;
     padding: 20px 52px;
     text-align: center;
-    transition-duration: 0.15s;
-    transition-property: background-color;
-    transition-timing-function: linear;
-    margin-top: 0.6em;
+    transition: 0.5s;
+    background-size: 200% auto;
+    border-radius: 10px;
   }
   
-  header {
-    padding: 40px;
-    text-align: center;
-    background: #13293d;
-    color: #fff;
-    border-bottom:30px #879274;
+  button:hover {
+    background-position: right center;
+    color: #00d2ff;
+    text-decoration: none;
   }
   
   main {
@@ -64,34 +61,87 @@
     border-radius: 8px;
   }
   
-  .word-guess {
-    width: 55vw;
-    height: 400px;
+  .button {
+    background-image: linear-gradient(to right, #ECE9E6 0%, #FFFFFF  51%, #ECE9E6  100%)
   }
   
-  .results {
-    width: 30vw;
-    height: 400px;
+  .button {
+    border: solid rgb(0, 0, 0) 0px;
+    border-radius: 8px;
+    color: #13293d;
+    cursor: pointer;
+    font-size: 2em;
+    letter-spacing: 0.21px;
+    line-height: 16px;
+    max-width: 255px;
+    padding: 20px 52px;
+    text-align: center;
+    transition: 0.5s;
+    background-size: 200% auto;
+    border-radius: 10px;
+    text-decoration: none;
+  }
+  
+  .button:hover {
+    background-position: right center;
+    color: #00d2ff;
+    text-decoration: none;
+  }
+  
+  .button-container {
+    padding-top: 15px;
+    display: inline-flex;
+  }
+  
+  .back-button {
+    margin-inline: 10px;
   }
   
   .card {
-    background: radial-gradient(circle, rgba(240,230,140,1) 0%, rgba(187,124,33,0.604079131652661) 100%);
-    border: 1px solid #eceff1;
+    height: 680px;
+    width: 550px;
+    background: linear-gradient(90deg, #00d2ff 0%, #3a47d5 100%);
     border-radius: 8px;
-    box-shadow: rgba(60, 64, 67, 2) 0 1px 2px 0,
-      rgba(60, 64, 67, 0.15) 0 2px 4px 3px;
-    margin: auto;
+    margin: 30px;
     padding: 20px;
   }
   
-  .word-blanks {
-    line-height: 360px;
+  .card-timer {
+    height: 680px;
+    width: 550px;
+    background: linear-gradient(90deg, #00d2ff 0%, #3a47d5 100%);
+    border-radius: 8px;
+    margin: 30px;
+    padding: 20px;
+    padding-top: 50px;
   }
   
-  .large-font {
-    font-size: 3.5em;
-    text-align:center;
+  .win-loss-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 16px;
   }
+  
+  .questions {
+    height: 420px;
+    padding: 10px;
+    margin-top: 0px;
+    margin-bottom: 30px;
+    background: #13293d;
+    color: #fff;
+    text-align: center;
+    border-radius: 10px;
+  }
+  
+  .option-container {
+    padding-top: 30px;
+    display: inline-grid;
+  }
+  
+  .option {
+    margin: 10px;
+  }
+  
   
   .timer {
     height: 240px;
@@ -99,40 +149,37 @@
     background: #13293d;
     color: #fff;
     text-align: center;
+    border-radius: 10px;
+  }
+  
+  .form-card {
+    height: 140px;
+    padding: 10px;
+    background: #13293d;
+    color: #fff;
+    text-align: center;
+    border-radius: 10px;
+  }
+  
+  .large-font {
+    font-size: 3.5em;
+    text-align:center;
   }
   
   .timer-text {
     padding: 55px;
   }
   
-  @media screen and (max-width: 1183px) {
-    main {
-      flex-direction: column;
-    }
-  
-    .word-guess,
-    .results {
-      width: 90vw;
-    }
-  
-    section {
-      background-color: white;
-      margin: 20px auto;
-      width: 92vw;
-    }
+  .highscore {
+    margin-left: 130px; 
   }
   
-  @media screen and (max-width: 504px) {
-    .large-font {
-      font-size: 2em;
-    }
+  .word-guess {
+    width: 55vw;
+    height: 400px;
+  }
   
-    .reset-button {
-      font-size: 12px;
-      width: 20ox;
-      
-    }
+  .word-blanks {
+    line-height: 360px;
+  }
   
-    .timer {
-      height: 200px;
-    }
