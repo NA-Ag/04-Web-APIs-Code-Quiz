@@ -142,37 +142,21 @@ function iterate(id) {
   
     // Show selection for op1
     option1.addEventListener("click", () => {
-        option1.style.backgroundColor = "lightgoldenrodyellow";
-        option2.style.backgroundColor = "lightskyblue";
-        option3.style.backgroundColor = "lightskyblue";
-        option4.style.backgroundColor = "lightskyblue";
         selected = option1.value;
     })
   
     // Show selection for op2
     option2.addEventListener("click", () => {
-        option1.style.backgroundColor = "lightskyblue";
-        option2.style.backgroundColor = "lightgoldenrodyellow";
-        option3.style.backgroundColor = "lightskyblue";
-        option4.style.backgroundColor = "lightskyblue";
         selected = option2.value;
     })
   
     // Show selection for op3
     option3.addEventListener("click", () => {
-        option1.style.backgroundColor = "lightskyblue";
-        option2.style.backgroundColor = "lightskyblue";
-        option3.style.backgroundColor = "lightgoldenrodyellow";
-        option4.style.backgroundColor = "lightskyblue";
         selected = option3.value;
     })
   
     // Show selection for op4
     option4.addEventListener("click", () => {
-        option1.style.backgroundColor = "lightskyblue";
-        option2.style.backgroundColor = "lightskyblue";
-        option3.style.backgroundColor = "lightskyblue";
-        option4.style.backgroundColor = "lightgoldenrodyellow";
         selected = option4.value;
     })
   
@@ -182,15 +166,15 @@ function iterate(id) {
     // Evaluate method
     evaluate[0].addEventListener("click", () => {
         if (selected == "true") {
-            result[0].innerHTML = "True";
+            result[0].innerHTML = "Correct";
             result[0].style.color = "green";
         } else {
-            result[0].innerHTML = "False";
+            result[0].innerHTML = "Wrong";
             result[0].style.color = "red";
         }
     })
 }
-  
+
 if (start) {
     iterate("0");
 }
