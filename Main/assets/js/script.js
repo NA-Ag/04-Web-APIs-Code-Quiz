@@ -1,3 +1,15 @@
+let result = document.querySelectorAll(".result");
+const evaluate = document.querySelectorAll(".evaluate");
+
+const question = document.querySelector("#question");  
+const option1 = document.querySelector("#option1");
+const option2 = document.querySelector("#option2");
+const option3 = document.querySelector("#option3");
+const option4 = document.querySelector("#option4");
+
+let selected = "";
+let start = true;
+
 //Questions from https://www.interviewbit.com/javascript-mcq/
 const Questions = [
     {
@@ -103,65 +115,49 @@ const Questions = [
 ];
 
 // Set start
-var start = true;
+
   
 // Iterate
 function iterate(id) {
-  
-    // Getting the result display section
-    var result = document.getElementsByClassName("result");
+
+    // The result section will change based on what answer the player gets. 
+    // Grabs the first element of result (i.e wrong or correct) and empty it. 
     result[0].innerText = "";
-  
-    // Getting the question
-    const question = document.getElementById("question");
-  
-  
+
     // Setting the question text
     question.innerText = Questions[id].q;
   
-    // Getting the options
-    const option1 = document.getElementById('option1');
-    const option2 = document.getElementById('option2');
-    const option3 = document.getElementById('option3');
-    const option4 = document.getElementById('option4');
-  
-  
-    // Providing option text 
+    // Setting option text 
     option1.innerText = Questions[id].a[0].text;
     option2.innerText = Questions[id].a[1].text;
     option3.innerText = Questions[id].a[2].text;
     option4.innerText = Questions[id].a[3].text;
   
-    // Providing the true or false value to the options
+    // Setting the true or false value to the options
     option1.value = Questions[id].a[0].isCorrect;
     option2.value = Questions[id].a[1].isCorrect;
     option3.value = Questions[id].a[2].isCorrect;
     option4.value = Questions[id].a[3].isCorrect;
   
-    var selected = "";
   
-    // Show selection for op1
+    // User selection options
     option1.addEventListener("click", () => {
         selected = option1.value;
     })
   
-    // Show selection for op2
     option2.addEventListener("click", () => {
         selected = option2.value;
     })
   
-    // Show selection for op3
     option3.addEventListener("click", () => {
         selected = option3.value;
     })
   
-    // Show selection for op4
     option4.addEventListener("click", () => {
         selected = option4.value;
     })
   
     // Grabbing the evaluate button
-    const evaluate = document.getElementsByClassName("evaluate");
   
     // Evaluate method
     evaluate[0].addEventListener("click", () => {
