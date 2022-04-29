@@ -132,6 +132,11 @@ function start() {
     startButton.value = "Stop";
     startButton.innerHTML = "Stop";
     userResult.innerHTML = "That's the spirit!";
+    userResult.style.color = "white";
+    option1.disabled = false;
+    option2.disabled = false;
+    option3.disabled = false;
+    option4.disabled = false;
     game(id);
 }
 
@@ -142,7 +147,19 @@ function stop() {
     startButton.value = "start";
     startButton.innerHTML = "Start"
     userResult.innerHTML = "Giving up eh?"
+    userResult.style.color = "white";
+    option1.disabled = true;
+    option2.disabled = true;
+    option3.disabled = true;
+    option4.disabled = true;
     id = 0;
+}
+
+function gameOver() {
+    option1.disabled = true;
+    option2.disabled = true;
+    option3.disabled = true;
+    option4.disabled = true;
 }
 
 option1.addEventListener("click", checkAndNext1); 
@@ -151,13 +168,17 @@ function checkAndNext1(){
     selected = option1.value;
     if (selected == "true") {
         userResult.innerHTML = "Correct";
+        userResult.style.color = "green";
     } else {
         userResult.innerHTML = "Wrong";
+        userResult.style.color = "red";
     }
 
     if (id < totalQuestions) {
         id++
         game(id);
+    } else if (id == totalQuestions) {
+        gameOver();
     }
 }
 
@@ -167,13 +188,17 @@ function checkAndNext2(){
     selected = option2.value;
     if (selected == "true") {
         userResult.innerHTML = "Correct";
+        userResult.style.color = "green";
     } else {
         userResult.innerHTML = "Wrong";
+        userResult.style.color = "red";
     }
 
     if (id < totalQuestions) {
         id++
         game(id);
+    } else if (id == totalQuestions) {
+        gameOver();
     }
 }
 
@@ -183,13 +208,16 @@ function checkAndNext3(){
     selected = option3.value;
     if (selected == "true") {
         userResult.innerHTML = "Correct";
+        userResult.style.color = "green";
     } else {
         userResult.innerHTML = "Wrong";
+        userResult.style.color = "red";
     }
-
     if (id < totalQuestions) {
         id++
         game(id);
+    } else if (id == totalQuestions) {
+        gameOver();
     }
 }
 
@@ -199,18 +227,21 @@ function checkAndNext4(){
     selected = option4.value;
     if (selected == "true") {
         userResult.innerHTML = "Correct";
+        userResult.style.color = "green";
     } else {
         userResult.innerHTML = "Wrong";
+        userResult.style.color = "red";
     }
 
     if (id < totalQuestions) {
         id++
         game(id);
+    } else if (id == totalQuestions) {
+        gameOver();
     }
 }
 
 function game() {
-    // Get the values from list
     currentQuestion.innerHTML = Questions[id].q;
     option1.innerHTML = Questions[id].a[0].text;
     option2.innerHTML = Questions[id].a[1].text;
@@ -221,64 +252,6 @@ function game() {
     option2.value = Questions[id].a[1].isCorrect;
     option3.value = Questions[id].a[2].isCorrect;
     option4.value = Questions[id].a[3].isCorrect;
-
 }
 
-
-// function quizGame(id) {
-//     question.innerHTML = Questions[id].q;
-//     option1.innerHTML = Questions[id].a[0].text;
-//     option2.innerHTML = Questions[id].a[1].text;
-//     option3.innerHTML = Questions[id].a[2].text;
-//     option4.innerHTML = Questions[id].a[3].text;
-
-//     option1.value = Questions[id].a[0].isCorrect;
-//     option2.value = Questions[id].a[1].isCorrect;
-//     option3.value = Questions[id].a[2].isCorrect;
-//     option4.value = Questions[id].a[3].isCorrect;
-
-//     option1.addEventListener("click", function(){
-//         selected = option1.value;
-//     })
-
-//     option2.addEventListener("click", function(){
-//         selected = option2.value;
-//     })
-
-//     option3.addEventListener("click", function(){
-//         selected = option3.value;
-//     })
-
-//     option4.addEventListener("click", function(){
-//         selected = option4.value;
-//     })
-
-
-
-//     // Evaluate method
-//     evaluate[0].addEventListener("click", () => {
-//         if (selected == "true") {
-//             result[0].innerHTML = "Correct";
-//             result[0].style.color = "green";
-//         } else {
-//             result[0].innerHTML = "Wrong";
-//             result[0].style.color = "red";
-//         } 
-//         // start = false;
-//     })
-// }
-
-// if (start) {
-//     iterate("0");
-// }
-  
-// // Next button and method
-  
-// next.addEventListener("click", () => {
-    
-//     if (id < Questions.length) {
-//         id++;
-//         iterate(id);
-//         console.log(id);
-//     }
-// });
+/* Functions end here */
