@@ -145,9 +145,9 @@ function stop() {
     id = 0;
 }
 
-option1.addEventListener("click", checkAndNext); 
+option1.addEventListener("click", checkAndNext1); 
 
-function checkAndNext(){
+function checkAndNext1(){
     selected = option1.value;
     if (selected == "true") {
         userResult.innerHTML = "Correct";
@@ -161,9 +161,9 @@ function checkAndNext(){
     }
 }
 
-option2.addEventListener("click", checkAndNext); 
+option2.addEventListener("click", checkAndNext2); 
 
-function checkAndNext(){
+function checkAndNext2(){
     selected = option2.value;
     if (selected == "true") {
         userResult.innerHTML = "Correct";
@@ -177,9 +177,9 @@ function checkAndNext(){
     }
 }
 
-option3.addEventListener("click", checkAndNext); 
+option3.addEventListener("click", checkAndNext3); 
 
-function checkAndNext(){
+function checkAndNext3(){
     selected = option3.value;
     if (selected == "true") {
         userResult.innerHTML = "Correct";
@@ -193,9 +193,9 @@ function checkAndNext(){
     }
 }
 
-option4.addEventListener("click", checkAndNext); 
+option4.addEventListener("click", checkAndNext4); 
 
-function checkAndNext(){
+function checkAndNext4(){
     selected = option4.value;
     if (selected == "true") {
         userResult.innerHTML = "Correct";
