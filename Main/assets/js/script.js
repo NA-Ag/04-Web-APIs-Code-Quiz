@@ -1,21 +1,15 @@
-/*  Variables declared here */
+/* Variables start here */
+let startButton = document.querySelector("#start-button");
+let userResult = document.querySelector("#result");
+let currentQuestion = document.querySelector("#question");
 
-//  Class variables
-let result = document.querySelectorAll(".result");
-const evaluate = document.querySelectorAll(".evaluate");
-const next = document.querySelectorAll('.next')[0];
+let currentOption = document.querySelectorAll(".option");
 
-//  Id variables
-const question = document.querySelector("#question");  
 const option1 = document.querySelector("#option1");
 const option2 = document.querySelector("#option2");
 const option3 = document.querySelector("#option3");
 const option4 = document.querySelector("#option4");
 
-//  Additional variables
-let selected = "";
-let start = true;
-let id = 0;
 //  Questions from https://www.interviewbit.com/javascript-mcq/
 const Questions = [
     {
@@ -119,89 +113,158 @@ const Questions = [
         ]  
     },
 ];
-/*  End variables   */ 
+
+let totalQuestions = Questions.length;
+let id = 0;
+let selected = "";
+
+/* Variables end here */
 
 
-/*  Functions start here    */
+/* Functions start here */
 
-  
-//  Iterate
-function iterate(id) {
+startButton.addEventListener("click", start);
 
-    // The result section will change based on what answer the player gets. 
-    // Grabs the first element of result (i.e wrong or correct) and empty it. 
-    result[0].innerText = "";
-    
-    // Setting the question text
-    question.innerText = Questions[id].q;
-  
-    // Setting option text 
-    option1.innerText = Questions[id].a[0].text;
-    option2.innerText = Questions[id].a[1].text;
-    option3.innerText = Questions[id].a[2].text;
-    option4.innerText = Questions[id].a[3].text;
-  
-    // Setting the true or false value to the options
+function start() {
+    console.log("Started");
+    startButton.removeEventListener("click", start);
+    startButton.addEventListener("click", stop);
+    startButton.value = "Stop";
+    startButton.innerHTML = "Stop";
+    userResult.innerHTML = "That's the spirit!";
+    userResult.style.color = "white";
+    option1.disabled = false;
+    option2.disabled = false;
+    option3.disabled = false;
+    option4.disabled = false;
+    game(id);
+}
+
+function stop() {
+    console.log("Stopped");
+    startButton.removeEventListener("click", stop);
+    startButton.addEventListener("click", start);
+    startButton.value = "start";
+    startButton.innerHTML = "Start";
+    userResult.innerHTML = "Giving up eh?";
+    userResult.style.color = "white";
+    option1.disabled = true;
+    option2.disabled = true;
+    option3.disabled = true;
+    option4.disabled = true;
+    id = 0;
+}
+
+function reset (){
+    id = 0;
+    startButton.removeEventListener("click", stop);
+    startButton.addEventListener("click", start);
+    startButton.value = "start";
+    startButton.innerHTML = "Start";
+}
+
+function gameOver() {
+    option1.disabled = true;
+    option2.disabled = true;
+    option3.disabled = true;
+    option4.disabled = true;
+    userResult.innerHTML = "Thanks for playing!";
+    userResult.style.color = "gold";
+    reset();
+        
+}
+
+option1.addEventListener("click", checkAndNext1); 
+
+function checkAndNext1(){
+    selected = option1.value;
+    if (selected == "true") {
+        userResult.innerHTML = "Correct";
+        userResult.style.color = "green";
+    } else {
+        userResult.innerHTML = "Wrong";
+        userResult.style.color = "red";
+    }
+
+    if (id < totalQuestions) {
+        id++
+        game(id);
+    } else if (id == totalQuestions) {
+        gameOver();
+    }
+}
+
+option2.addEventListener("click", checkAndNext2); 
+
+function checkAndNext2(){
+    selected = option2.value;
+    if (selected == "true") {
+        userResult.innerHTML = "Correct";
+        userResult.style.color = "green";
+    } else {
+        userResult.innerHTML = "Wrong";
+        userResult.style.color = "red";
+    }
+
+    if (id < totalQuestions) {
+        id++
+        game(id);
+    } else if (id == totalQuestions) {
+        gameOver();
+    }
+}
+
+option3.addEventListener("click", checkAndNext3); 
+
+function checkAndNext3(){
+    selected = option3.value;
+    if (selected == "true") {
+        userResult.innerHTML = "Correct";
+        userResult.style.color = "green";
+    } else {
+        userResult.innerHTML = "Wrong";
+        userResult.style.color = "red";
+    }
+    if (id < totalQuestions) {
+        id++
+        game(id);
+    } else if (id == totalQuestions) {
+        gameOver();
+    }
+}
+
+option4.addEventListener("click", checkAndNext4); 
+
+function checkAndNext4(){
+    selected = option4.value;
+    if (selected == "true") {
+        userResult.innerHTML = "Correct";
+        userResult.style.color = "green";
+    } else {
+        userResult.innerHTML = "Wrong";
+        userResult.style.color = "red";
+    }
+
+    if (id < totalQuestions) {
+        id++
+        game(id);
+    } else if (id == totalQuestions) {
+        gameOver();
+    }
+}
+
+function game() {
+    currentQuestion.innerHTML = Questions[id].q;
+    option1.innerHTML = Questions[id].a[0].text;
+    option2.innerHTML = Questions[id].a[1].text;
+    option3.innerHTML = Questions[id].a[2].text;
+    option4.innerHTML = Questions[id].a[3].text;
+
     option1.value = Questions[id].a[0].isCorrect;
     option2.value = Questions[id].a[1].isCorrect;
     option3.value = Questions[id].a[2].isCorrect;
     option4.value = Questions[id].a[3].isCorrect;
-  
-  
-    // User selection options
-    
-
-
-    option1.addEventListener("click", () => {
-        selected = option1.value;
-    })
-  
-    option2.addEventListener("click", () => {
-        selected = option2.value;
-    })
-  
-    option3.addEventListener("click", () => {
-        selected = option3.value;
-    })
-  
-    option4.addEventListener("click", () => {
-        selected = option4.value;
-    })
-  
-    // Grabbing the evaluate button
-  
-    // Evaluate method
-    evaluate[0].addEventListener("click", () => {
-        if (selected == "true") {
-            result[0].innerHTML = "Correct";
-            result[0].style.color = "green";
-        } else {
-            result[0].innerHTML = "Wrong";
-            result[0].style.color = "red";
-        } 
-        // start = false;
-    })
 }
 
 
-
-
-
-if (start) {
-    iterate("0");
-}
-  
-
-
-
-// Next button and method
-  
-next.addEventListener("click", () => {
-    
-    if (id < Questions.length) {
-        id++;
-        iterate(id);
-        console.log(id);
-    }
-});
-
+/* Functions end here */

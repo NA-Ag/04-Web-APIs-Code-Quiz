@@ -1,68 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./assets/css/normalize.css" />
-    <link rel="stylesheet" href="./assets/css/style.css" />
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/normalize.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
     <title>Quiz Game</title>
-  </head>
+</head>
 
-  <body>
+<body>
     <header>
-      <h1>Javascript Quiz Game</h1>
-      <div>
-        <p>Answer as many questions as you can within the time limit.</p>
-        <p>Wrong answers will deduct 10 secounds from your remaining time.</p>
-        <!-- Start button will be used to begin the quizz-->
-        <button class="start-button">Start</button>
-      </div>
+        <h1>Javascript Quiz Game</h1>
+        <div>
+            <p>Answer as many questions as you can within the time limit.</p>
+            <p>Wrong answers will deduct 10 seconds from your time.</p>
+            <!-- Start button will work as a stop button as well -->
+            <button id="start-button">Start</button>
+        </div>
     </header>
 
     <main>
-      <!--Questions section-->
-      <section class="card">
-        <!--Questions will appear in this section-->
-        <div class="form-card large-font result"></div>
-        <div class="questions">
-          <div id="question">Questions appear here</div>
-          <div class="option-container option-button">
-            <button class="option" onclick="" id="option1">option1</button>
-            <button class="option" onclick="" id="option2">option2</button>
-            <button class="option" onclick="" id="option3">option3</button>
-            <button class="option" onclick="" id="option4">option4</button>
-          </div>
-        </div>
 
-        <!---->
-        <div class="navigation form-card button">
-          <button class="evaluate">Evaluate</button>
-          <button class="next">Next</button>
-        </div>
-      </section>
+        <!-- Game Card -->
+        <section class="card">
+            <!-- Result per answer will be displayed here -->
+            <div class="form-card large-font result" id="result">
+                Right or Wrong?
+            </div>  
+            <!-- Questions container -->
+            <div class="questions">
+                <!--Question changes according to click -->
+                <div id="question">Questions appear here</div>
+                <!-- Options for the user in button format -->
+                <div class="option-container option-button">
+                    <button class="option"  id="option1">option1</button>
+                    <button class="option"  id="option2">option2</button>
+                    <button class="option"  id="option3">option3</button>
+                    <button class="option"  id="option4">option4</button>
+                </div>
+            </div>
+        </section>
 
-      <!--Timer, highscore button, and current score will appear here-->
-      <section class="card-timer">
-        <div>
-          <a class="highscore button" href="./highscores.html">Highscore</a>
-        </div>
+        <!-- Data card -->
+        <section class="card-timer">
+            <div>
+                <a class="highscore button" href="./highscores.html">Highscores</a>
+            </div>
 
-        <div class="win-loss-container">
-          <div>
-            <h2>Score: <span class="win score">0 </span></h2>
-          </div>
-        </div>
+            <div class="form-card-score">
+                <h2>Score <span id="currentScore">0</span></h2>
+            </div>
 
-        <div class="timer">
-          <div class="timer-text">
-            <span class="large-font timer-count timer">60</span>
-            <h3>seconds remaining</h3>
-          </div>
-        </div>
-      </section>
+            <div class="timer timer-text form-card-score form-card-time">
+                <span class="large-font" id="timeRemaining">60</span>
+                <h2>Seconds remaining</h2>
+            </div>
+        </section>
+
     </main>
-
     <script src="./assets/js/script.js"></script>
-  </body>
+</body>
 </html>

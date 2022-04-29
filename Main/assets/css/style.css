@@ -116,12 +116,6 @@ body {
     padding-top: 50px;
   }
   
-  .win-loss-container {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 16px;
-  }
-  
   .result {
     margin-bottom: 10px;   
   }
@@ -184,6 +178,22 @@ body {
     border-radius: 10px;
   }
   
+  .form-card-score {
+    height: 140px;
+    margin-top: 35px;
+    padding: 35px;
+    background: #13293d;
+    color: #fff;
+    text-align: center;
+    border-radius: 10px;
+  }
+
+  .form-card-time{
+    height: 250px;
+    margin-top: 10px;
+  }
+
+
   .large-font {
     font-size: 3.5em;
     text-align:center;
