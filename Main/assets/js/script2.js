@@ -3,6 +3,8 @@ let startButton = document.querySelector("#start-button");
 let userResult = document.querySelector("#result");
 let currentQuestion = document.querySelector("#question");
 
+let currentOption = document.querySelectorAll(".option");
+
 const option1 = document.querySelector("#option1");
 const option2 = document.querySelector("#option2");
 const option3 = document.querySelector("#option3");
@@ -112,10 +114,9 @@ const Questions = [
     },
 ];
 
-// let start = false;
 let totalQuestions = Questions.length;
 let id = 0;
-
+let selected = "";
 
 /* Variables end here */
 
@@ -130,7 +131,8 @@ function start() {
     startButton.addEventListener("click", stop);
     startButton.value = "Stop";
     startButton.innerHTML = "Stop";
-    userResult.innerHTML = "That's the spirit!"
+    userResult.innerHTML = "That's the spirit!";
+    game(id);
 }
 
 function stop() {
@@ -140,13 +142,72 @@ function stop() {
     startButton.value = "start";
     startButton.innerHTML = "Start"
     userResult.innerHTML = "Giving up eh?"
+    id = 0;
 }
 
-function choice() {
-    alert("Hello world");
-    
+option1.addEventListener("click", checkAndNext); 
+
+function checkAndNext(){
+    selected = option1.value;
+    if (selected == "true") {
+        userResult.innerHTML = "Correct";
+    } else {
+        userResult.innerHTML = "Wrong";
+    }
+
+    if (id < totalQuestions) {
+        id++
+        game(id);
+    }
 }
 
+option2.addEventListener("click", checkAndNext); 
+
+function checkAndNext(){
+    selected = option2.value;
+    if (selected == "true") {
+        userResult.innerHTML = "Correct";
+    } else {
+        userResult.innerHTML = "Wrong";
+    }
+
+    if (id < totalQuestions) {
+        id++
+        game(id);
+    }
+}
+
+option3.addEventListener("click", checkAndNext); 
+
+function checkAndNext(){
+    selected = option3.value;
+    if (selected == "true") {
+        userResult.innerHTML = "Correct";
+    } else {
+        userResult.innerHTML = "Wrong";
+    }
+
+    if (id < totalQuestions) {
+        id++
+        game(id);
+    }
+}
+
+option4.addEventListener("click", checkAndNext); 
+
+function checkAndNext(){
+    selected = option4.value;
+    if (selected == "true") {
+        userResult.innerHTML = "Correct";
+    } else {
+        userResult.innerHTML = "Wrong";
+    }
+
+    if (id < totalQuestions) {
+        id++
+        game(id);
+    }
+}
 
 function game() {
     // Get the values from list
@@ -160,8 +221,6 @@ function game() {
     option2.value = Questions[id].a[1].isCorrect;
     option3.value = Questions[id].a[2].isCorrect;
     option4.value = Questions[id].a[3].isCorrect;
-
-       
 
 }
 
@@ -194,31 +253,7 @@ function game() {
 //         selected = option4.value;
 //     })
 
-// }
 
-// while (startGame) {
-//     quizGame("0");
-//     if (id < totalQuestions){
-//         id++;
-//         quizGame(id);
-//     }
-// }
-
-
-// startButton.addEventListener("click", function() {
-//     console.log("Started");
-
-//     userResult.innerHTML = "Correct";
-//     userResult.style.color = "green";
-//     startButton.innerHTML = "Stop";
-//     currentQuestion.innerHTML = "Yay";
-// })
-
-// function test1() {
-//     option1.innerHTML = "success";
-//     option2.innerHTML = "failure";
-    
-// }
 
 //     // Evaluate method
 //     evaluate[0].addEventListener("click", () => {
