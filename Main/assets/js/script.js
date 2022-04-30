@@ -1,16 +1,23 @@
 /* Variables start here */
+
+// Game Variables
 let startButton = document.querySelector("#start-button");
 let userResult = document.querySelector("#result");
 let currentQuestion = document.querySelector("#question");
 let scoreNow = document.querySelector("#currentScore");
 let timeLeft = document.querySelector("#timer");
-
 let currentOption = document.querySelectorAll(".option");
-
 const option1 = document.querySelector("#option1");
 const option2 = document.querySelector("#option2");
 const option3 = document.querySelector("#option3");
 const option4 = document.querySelector("#option4");
+
+// Score Variables
+let userInput = document.querySelector("#user-text");
+let userForm = document.querySelector("#user-form");
+let userList = document.querySelector("#user-list");
+let clearUsers = document.querySelector("#reset-button");
+let getHighscores = document.querySelector("#highscore");
 
 //  Questions from https://www.interviewbit.com/javascript-mcq/
 const Questions = [
@@ -116,6 +123,8 @@ const Questions = [
     },
 ];
 
+let users = [];
+
 let totalQuestions = Questions.length;
 let id = 0;
 let selected = "";
@@ -130,6 +139,7 @@ let finished = false;
 
 /* Functions start here */
 
+// Game functions here
 option1.disabled = true;
 option2.disabled = true;
 option3.disabled = true;
@@ -320,5 +330,63 @@ function timer()
 
   timeLeft.innerHTML = count;
 }
+// End of Game functions
+
+// Highscore functions start here
+
+function renderUsers() {
+    userList.innerHTML = "";
+    for (var i = 0; i < users.length; i++) {
+      let user = users[i];
+      let li = document.createElement("li");
+      li.textContent = user;
+      li.setAttribute("data-index", i);
+      userList.appendChild(li);
+    }
+  }
+  
+  // This function is being called below and will run when the page loads.
+  function init() {
+      // Get stored todos from localStorage
+      let storedUsers = JSON.parse(localStorage.getItem("users"));
+      // If todos were retrieved from localStorage, update the todos array to it
+      if (storedUsers !== null) {
+          users = storedUsers;
+        }
+        // This is a helper function that will render todos to the DOM
+        // renderUsers();
+    }
+    
+    
+    function storeUsers() {
+        localStorage.setItem("users", JSON.stringify(users));
+    }
+    
+    userForm.addEventListener("submit", function(event) {
+        event.preventDefault();
+        let userText = "NAME: " + userInput.value.trim() + " SCORE: " + scoreNow.innerText;
+        if (userText === "") {
+            return;
+        }
+        users.push(userText);
+        userInput.value = "";
+        storeUsers();
+    });
+        
+    getHighscores.addEventListener("click", renderUsers);
+    
+    clearUsers.addEventListener("click", function(event) {
+        let element = event.target;
+        if (element.matches("button") === true) {
+            let index = element.parentElement.getAttribute("data-index");
+            users.splice(index, users.length); 
+            storeUsers();
+        }
+    });
+    
+    
+    init()
+    
+
 
 /* Functions end here */

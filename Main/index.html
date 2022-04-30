@@ -44,21 +44,39 @@
 
         <!-- Data card -->
         <section class="card-timer">
+            <!-- Hischore button will render the list of high scores -->
             <div>
-                <a class="highscore button" href="./highscores.html">Highscores</a>
+                <button class="highscore button" id="highscore">Highscores</button>
             </div>
 
+            <!-- Score will update as the player gains points -->
             <div class="form-card-score">
                 <h2>Score <span id="currentScore">0</span></h2>
             </div>
 
+            <!-- Timer will decrease as normal unless the player makes a mistake. -->
             <div class="timer timer-text form-card-score form-card-time">
                 <span class="large-font" id="timer">100</span>
                 <h2>Seconds remaining</h2>
             </div>
         </section>
 
+        <!-- Highscore Section-->
+        <section class="card">
+            <!-- The form will appear when the user has finished the game -->
+            <div>
+                <form id="user-form" method="POST">
+                    <label for="user-text">Input your Name: </label>
+                    <input type="text" placeholder="Name..." name="user-text" id="user-text" />
+                </form>
+                <!-- User score and the button to clear values will appear here-->
+                <ul id="user-list"></ul>
+                <button class="reset-button" id="reset-button">Clear</button>
+            </div>
+        </section>
+
     </main>
     <script src="./assets/js/script.js"></script>
+
 </body>
 </html>

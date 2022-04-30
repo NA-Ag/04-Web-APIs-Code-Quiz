@@ -60,7 +60,35 @@ body {
     background-color: white;
     border-radius: 8px;
   }
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+    background-color: white;
+  }
   
+  li {
+    height: 50px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 5px;
+    background-color:  #001b44;
+    color: white;
+    font-size: 1.5em;
+    line-height: 1.5;
+  }
+  
+  li:before {
+    content: "\200B";
+    position: absolute;
+  }
+  
+  li::after {
+    content: " ";
+    display: block;
+    clear: both;
+  } 
+ 
   .button {
     background-image: linear-gradient(to right, #ECE9E6 0%, #FFFFFF  51%, #ECE9E6  100%)
   }
@@ -206,7 +234,7 @@ body {
   .highscore {
     margin-left: 130px; 
   }
-  
+
   .word-guess {
     width: 55vw;
     height: 400px;
