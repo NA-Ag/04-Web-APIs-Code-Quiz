@@ -2,6 +2,8 @@
 let startButton = document.querySelector("#start-button");
 let userResult = document.querySelector("#result");
 let currentQuestion = document.querySelector("#question");
+let scoreNow = document.querySelector("#currentScore");
+let timeLeft = document.querySelector("#timer");
 
 let currentOption = document.querySelectorAll(".option");
 
@@ -117,11 +119,21 @@ const Questions = [
 let totalQuestions = Questions.length;
 let id = 0;
 let selected = "";
+let score = 0;
+let count;
+let counter;
+let finished = false;
+
 
 /* Variables end here */
 
 
 /* Functions start here */
+
+option1.disabled = true;
+option2.disabled = true;
+option3.disabled = true;
+option4.disabled = true;
 
 startButton.addEventListener("click", start);
 
@@ -137,7 +149,11 @@ function start() {
     option2.disabled = false;
     option3.disabled = false;
     option4.disabled = false;
+    score = 0;
+    counter = setInterval(timer, 1000);
+    count = 100;
     game(id);
+    timer();
 }
 
 function stop() {
@@ -152,15 +168,18 @@ function stop() {
     option2.disabled = true;
     option3.disabled = true;
     option4.disabled = true;
+    clearInterval(counter);
     id = 0;
 }
 
 function reset (){
     id = 0;
+    score = 0;
     startButton.removeEventListener("click", stop);
     startButton.addEventListener("click", start);
     startButton.value = "start";
     startButton.innerHTML = "Start";
+    count = 100;
 }
 
 function gameOver() {
@@ -181,9 +200,11 @@ function checkAndNext1(){
     if (selected == "true") {
         userResult.innerHTML = "Correct";
         userResult.style.color = "green";
+        score += 10;
     } else {
         userResult.innerHTML = "Wrong";
         userResult.style.color = "red";
+        count -= 10;
     }
 
     if (id < totalQuestions) {
@@ -191,6 +212,7 @@ function checkAndNext1(){
         game(id);
     } else if (id == totalQuestions) {
         gameOver();
+        finished = true;
     }
 }
 
@@ -201,9 +223,11 @@ function checkAndNext2(){
     if (selected == "true") {
         userResult.innerHTML = "Correct";
         userResult.style.color = "green";
+        score += 10;
     } else {
         userResult.innerHTML = "Wrong";
         userResult.style.color = "red";
+        count -= 10;
     }
 
     if (id < totalQuestions) {
@@ -211,6 +235,7 @@ function checkAndNext2(){
         game(id);
     } else if (id == totalQuestions) {
         gameOver();
+        finished = true;
     }
 }
 
@@ -221,15 +246,18 @@ function checkAndNext3(){
     if (selected == "true") {
         userResult.innerHTML = "Correct";
         userResult.style.color = "green";
+        score += 10;
     } else {
         userResult.innerHTML = "Wrong";
         userResult.style.color = "red";
+        count -= 10;
     }
     if (id < totalQuestions) {
         id++
         game(id);
     } else if (id == totalQuestions) {
         gameOver();
+        finished = true;
     }
 }
 
@@ -240,9 +268,11 @@ function checkAndNext4(){
     if (selected == "true") {
         userResult.innerHTML = "Correct";
         userResult.style.color = "green";
+        score += 10;
     } else {
         userResult.innerHTML = "Wrong";
         userResult.style.color = "red";
+        count -= 10;
     }
 
     if (id < totalQuestions) {
@@ -250,8 +280,11 @@ function checkAndNext4(){
         game(id);
     } else if (id == totalQuestions) {
         gameOver();
+        finished = true;
     }
 }
+
+
 
 function game() {
     currentQuestion.innerHTML = Questions[id].q;
@@ -264,7 +297,26 @@ function game() {
     option2.value = Questions[id].a[1].isCorrect;
     option3.value = Questions[id].a[2].isCorrect;
     option4.value = Questions[id].a[3].isCorrect;
+
+    scoreNow.innerHTML = score;
 }
 
+function timer()
+{
+  count=count-1;
+  if (count < 0)
+  {
+      clearInterval(counter);
+      option1.disabled = true;
+      option2.disabled = true;
+      option3.disabled = true;
+      option4.disabled = true;
+      return;
+  } else if (finished) {
+      return;
+  }
+
+  timeLeft.innerHTML = count;
+}
 
 /* Functions end here */
