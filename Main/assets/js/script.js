@@ -180,6 +180,7 @@ function reset (){
     startButton.value = "start";
     startButton.innerHTML = "Start";
     count = 100;
+    timeLeft.innerHTML = 100;
 }
 
 function gameOver() {
@@ -311,6 +312,7 @@ function timer()
       option2.disabled = true;
       option3.disabled = true;
       option4.disabled = true;
+      reset();
       return;
   } else if (finished) {
       return;
